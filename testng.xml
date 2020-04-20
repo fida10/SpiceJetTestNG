@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="StartUp.Listeners"/>
+    </listeners>
+    <parameter name="url" value="https://www.spicejet.com/"/>
+    <parameter name="userName" value="5163082617"/>
+    <parameter name="passWord" value="Tester@123"/>
+    <test verbose="2" preserve-order="true"
+          name="/Users/fida10/Documents/Lynda Hackalicious exercise files/JavaPractice/SpiceJetTestNG">
+        <classes>
+            <class name="StartUp.Initializer"/>
+            <class name="AdditionalTopOptions.SignIn"/>
+            <class name="FlightOptions.OneWayOptions"/>
+            <class name="FlightOptions.DatePicker"/>
+            <class name="FlightOptions.PaxPicker"/>
+            <class name="FlightOptions.CurrencyPicker"/>
+            <class name="FlightOptions.SearchButton"/>
+        </classes>
+    </test>
+</suite>
