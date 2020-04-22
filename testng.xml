@@ -4,7 +4,6 @@
     <listeners>
         <listener class-name="StartUp.Listeners"/>
     </listeners>
-    <parameter name="url" value="https://www.spicejet.com/"/>
     <parameter name="userName" value="5163082617"/>
     <parameter name="passWord" value="Tester@123"/>
     <test verbose="2" preserve-order="true"

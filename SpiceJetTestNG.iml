@@ -42,5 +42,20 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/selenium/commons-io-2.6/commons-io-2.6-tests.jar!/" />
+          <root url="jar://$USER_HOME$/selenium/commons-io-2.6/commons-io-2.6.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$USER_HOME$/selenium/commons-io-2.6/commons-io-2.6-javadoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$USER_HOME$/selenium/commons-io-2.6/commons-io-2.6-test-sources.jar!/" />
+          <root url="jar://$USER_HOME$/selenium/commons-io-2.6/commons-io-2.6-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

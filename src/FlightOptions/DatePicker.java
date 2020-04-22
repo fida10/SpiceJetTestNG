@@ -1,12 +1,11 @@
 package FlightOptions;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -17,6 +16,14 @@ import static StartUp.Initializer.dr;
 import static StartUp.Initializer.pro;
 
 public class DatePicker {
+	public static void exitCurrentOpenBox(){ //clicks somewhere else, in this case on where it says "depart date", to exit out of the date box
+		Actions a = new Actions(dr);
+		a
+				.moveToElement(dr.findElement(By.xpath("//label[@for='ControlGroupSearchView_AvailabilitySearchInputSearchView_TextBoxMarketOrigin1']")))
+				.click()
+				.build()
+				.perform();
+	}
 	public static void departDate(String monthFirstLetterCapital, String year, String date){
 		Actions a = new Actions(dr);
 		WebElement departDateBox = dr.findElement(By.xpath("//input[@class='custom_date_pic required home-date-input' and @id='custom_date_picker_id_1']"));//dynamic, this is different between before login and after...
@@ -37,6 +44,7 @@ public class DatePicker {
 						.perform();
 			}
 		}
+
 		List<String> endOfCalendar = new ArrayList<>();
 		endOfCalendar.add("dummyMonthAndYear1");
 		endOfCalendar.add("dummyYearAndMonth2");
@@ -47,6 +55,7 @@ public class DatePicker {
 			if(depMonth.contains(monthFirstLetterCapital) && depYear.contains(year))
 			{
 				System.out.println("Reached desired month and year.");
+				//Thread.sleep(100); //sometimes it will reach the desired month and click on the date too fast for the website to register it. A 100ms wait will seek to curb this. Activate this if it becomes too problematic and put in the exceptions
 				break;
 			}
 			String currentMonthAndYear = depMonth + " " + depYear;
@@ -78,12 +87,7 @@ public class DatePicker {
 		departDate(pro.getProperty("depMonthFirstLetterCapital"), pro.getProperty("depYear"), pro.getProperty("depDate")); //variables must now be defined in properties
 	}
 	@AfterClass
-	public void exitDatePicker(){ //clicks somewhere else, in this case on where it says "depart date", to exit out of the date box
-		Actions a = new Actions(dr);
-		a
-				.moveToElement(dr.findElement(By.xpath("//label[@for='ControlGroupSearchView_AvailabilitySearchInputSearchView_TextBoxMarketOrigin1']")))
-				.click()
-				.build()
-				.perform();
+	public void exitCurrentBoxAgain(){
+		exitCurrentOpenBox(); //if the test fails and datepicker stays open, this will again click on a specified non-functional point and get rid of the date box
 	}
 }
